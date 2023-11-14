@@ -1,0 +1,66 @@
+linters-settings:
+  errcheck:
+    check-type-assertions: true
+    check-blank: true
+  govet:
+    check-shadowing: true
+    use-installed-packages: true
+  golint:
+    min-confidence: 0
+  gofmt:
+    simplify: true
+  gocyclo:
+    min-complexity: 20
+  maligned:
+    suggest-new: true
+  dupl:
+    threshold: 90
+  goconst:
+    min-len: 2
+    min-occurrences: 2
+  misspell:
+    locale: US
+  lll:
+    line-length: 180
+    tab-width: 4
+  unused:
+    check-exported: true
+  nakedret:
+    max-func-lines: 30
+  prealloc:
+    simple: true
+    range-loops: true
+    for-loops: true
+issues:
+  exclude-rules:
+    - path: _test\.go
+      linters:
+        - unused
+        - gochecknoglobals
+        - gomnd
+    - path: def/
+      linters:
+        - unused
+        - gochecknoglobals
+    - path: kafka_test.go
+      linters:
+        - gci
+    - linters:
+        - golint
+        - unused
+      text: "mock"
+    - linters:
+        - golint
+      text: " New"
+linters:
+  enable-all: true
+  fast: false
+  disable:
+    - gochecknoinits
+    - wsl
+    - godox
+    - unused
+    - nlreturn
+    - testpackage
+    - goerr113
+    - godot
